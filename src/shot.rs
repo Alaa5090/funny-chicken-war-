@@ -32,5 +32,8 @@ impl EggShot for Shot {
         self.exploding = true;
         self.timer = Timer::from_millis(250);
     }
+     fn dead(&self) -> bool {
+        (self.exploding && self.timer.ready) || (self.y == 0)
+    }
 
 }
