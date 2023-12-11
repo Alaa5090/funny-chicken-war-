@@ -1,9 +1,11 @@
+use std::time::Duration;
+
 
 
 pub trait EggShot{
-    pub fn update(&mut self, delta: Duration);
-    pub fn explode(&mut self);
-    pub fn dead(&self) -> bool;
+    fn update(&mut self, delta: Duration);
+    fn explode(&mut self);
+    fn dead(&self) -> bool;
 
 
 
