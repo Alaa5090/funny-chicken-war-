@@ -1,3 +1,4 @@
+use crate::egg_shot::EggShot;
 use crate::frame::{Drawable, Frame};
 use rusty_time::timer::Timer;
 use std::time::Duration;
