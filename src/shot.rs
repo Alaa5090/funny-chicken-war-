@@ -28,12 +28,17 @@ impl EggShot for Shot {
             self.timer.reset();
         }
     }
-     fn explode(&mut self) {
+    fn explode(&mut self) {
         self.exploding = true;
         self.timer = Timer::from_millis(250);
     }
-     fn dead(&self) -> bool {
+    fn dead(&self) -> bool {
         (self.exploding && self.timer.ready) || (self.y == 0)
     }
+}
 
+impl Drawable for Shot {
+    fn draw(&self, frame: &mut Frame) {
+        frame[self.x][self.y] = if self.exploding { '🔥' } else { '💣' };
+    }
 }
