@@ -28,4 +28,9 @@ impl EggShot for Shot {
             self.timer.reset();
         }
     }
+     fn explode(&mut self) {
+        self.exploding = true;
+        self.timer = Timer::from_millis(250);
+    }
+
 }
