@@ -45,4 +45,14 @@ pub fn explode(&mut self) {
 pub fn dead(&self) -> bool {
     (self.exploding && self.timer.ready) || (self.y == 19)
 }
+impl Drawable for Egg{
+    fn draw(&self, frame: &mut Frame) {
+        frame[self.x][self.y] = if self.exploding { '🐣' } else { '🥚' };
+        if self.broken{
+            frame[self.x][self.y] = '🍳';
+        }
+    }
+
+
+}
     
