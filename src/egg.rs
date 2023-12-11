@@ -9,3 +9,17 @@ pub struct Egg {
     pub broken:bool,
     timer: Timer,
 }
+impl Egg { 
+    pub fn new(x: usize, y: usize) -> Self {
+        Self {
+            x,
+            y,
+            exploding: false,
+            broken:false,
+            timer: Timer::from_millis(50),
+        }
+    } 
+}
+
+
+    
