@@ -18,3 +18,14 @@ impl Shot {
         }
     }
 }
+impl EggShot for Shot {
+    fn update(&mut self, delta: Duration) {
+        self.timer.update(delta);
+        if self.timer.ready && !self.exploding {
+            if self.y > 0 {
+                self.y -= 1;
+            }
+            self.timer.reset();
+        }
+    }
+}
