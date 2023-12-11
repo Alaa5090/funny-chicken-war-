@@ -20,6 +20,10 @@ impl Egg {
         }
     } 
 }
+pub fn omlet(&mut self) {
+    self.broken = true;
+    self.timer = Timer::from_millis(250);
+}
 
 
     
