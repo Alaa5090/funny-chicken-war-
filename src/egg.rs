@@ -24,6 +24,19 @@ pub fn omlet(&mut self) {
     self.broken = true;
     self.timer = Timer::from_millis(250);
 }
-
+impl EggShot for Egg{
+     fn update(&mut self, delta: Duration) {
+        self.timer.update(delta/8);
+        if self.timer.ready && !self.exploding {
+            if self.y <= 20 {
+                self.y += 1;
+            }
+            if self.y == 18 {
+                self.omlet();
+            }
+            self.timer.reset();
+        }
+    }
+}
 
     
