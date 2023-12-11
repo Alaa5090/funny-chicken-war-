@@ -8,3 +8,13 @@ pub struct Shot {
     pub exploding: bool,
     timer: Timer,
 }
+impl Shot {
+    pub fn new(x: usize, y: usize) -> Self {
+        Self {
+            x,
+            y,
+            exploding: false,
+            timer: Timer::from_millis(50),
+        }
+    }
+}
