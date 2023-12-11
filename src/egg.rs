@@ -1,4 +1,5 @@
-use crate::frame::{Drawable, Frame,EggShot};
+use crate::frame::{Drawable, Frame};
+use crate::egg_shot::EggShot;
 use rusty_time::timer::Timer;
 use std::time::Duration;
 
@@ -19,10 +20,11 @@ impl Egg {
             timer: Timer::from_millis(50),
         }
     } 
-}
+
 pub fn omlet(&mut self) {
     self.broken = true;
     self.timer = Timer::from_millis(250);
+ }
 }
 impl EggShot for Egg{
      fn update(&mut self, delta: Duration) {
@@ -37,14 +39,16 @@ impl EggShot for Egg{
             self.timer.reset();
         }
     }
+
+    fn explode(&mut self) {
+        self.exploding = true;
+        self.timer = Timer::from_millis(250);
+    }
+    fn dead(&self) -> bool {
+        (self.exploding && self.timer.ready) || (self.y == 19)
+    }
 }
-pub fn explode(&mut self) {
-    self.exploding = true;
-    self.timer = Timer::from_millis(250);
-}
-pub fn dead(&self) -> bool {
-    (self.exploding && self.timer.ready) || (self.y == 19)
-}
+
 impl Drawable for Egg{
     fn draw(&self, frame: &mut Frame) {
         frame[self.x][self.y] = if self.exploding { '🐣' } else { '🥚' };
