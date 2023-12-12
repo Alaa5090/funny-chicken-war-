@@ -143,3 +143,9 @@ impl Invaders {
     }
 
 }
+
+impl Default for Invaders {
+    fn default() -> Self {
+        Self::new()
+    }
+}
