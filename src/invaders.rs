@@ -122,4 +122,8 @@ impl Invaders {
         }
         false
     }
+    pub fn all_killed(&self) -> bool {
+        self.army.is_empty()
+    }
+
 }
