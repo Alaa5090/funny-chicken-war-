@@ -1,7 +1,9 @@
+use std::time::Duration;
+use crate::player::Player;
 pub trait InvaderPlayer {
-    pub fn shoot(&mut self) -> bool;
-    pub fn update(&mut self, delta: Duration);
-    pub fn detect_hits(&mut self, player: &mut Player);
+     fn shoot(&mut self) -> bool;
+     fn update(&mut self, delta: Duration);
+     fn detect_hits(&mut self, player: &mut Player);
 
 
 }
