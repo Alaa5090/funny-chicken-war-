@@ -1,6 +1,7 @@
 use crate::{
+    egg_shot::EggShot,
     frame::{Drawable, Frame},
-    invader_player::InvaderPlayer,egg_shot::EggShot,
+    invader_player::InvaderPlayer,
     invaders::Invaders,
     shot::Shot,
     {NUM_COLS, NUM_ROWS},
@@ -56,13 +57,13 @@ impl InvaderPlayer for Player {
             false
         }
     }
-     fn update(&mut self, delta: Duration) {
+    fn update(&mut self, delta: Duration) {
         for shot in self.shots.iter_mut() {
             shot.update(delta);
         }
         self.shots.retain(|shot| !shot.dead());
     }
-     fn detect_hits(&mut self, invaders: &mut Invaders) -> u16 {
+    fn detect_hits(&mut self, invaders: &mut Invaders) -> u16 {
         let mut hit_something = 0u16;
         for shot in self.shots.iter_mut() {
             if !shot.exploding {
@@ -74,5 +75,26 @@ impl InvaderPlayer for Player {
             }
         }
         hit_something
+    }
+}
+impl Default for Player {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Drawable for Player {
+    fn draw(&self, frame: &mut Frame) {
+        if self.killed{
+            frame[self.x][self.y] = '💥';
+        }
+        else{
+            frame[self.x][self.y] = '🚀';
+        
+            for shot in self.shots.iter() {
+                shot.draw(frame);
+            }
+        }
+        
     }
 }
