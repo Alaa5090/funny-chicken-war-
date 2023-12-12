@@ -9,6 +9,9 @@ impl Score {
     pub fn new() -> Self {
         Self { count: 0 }
     }
+    pub fn add_points(&mut self, amount: u16) {
+        self.count += amount;
+    }
 
 
 
