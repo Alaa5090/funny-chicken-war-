@@ -22,3 +22,15 @@ impl Default for Level {
         Self::new()
     }
 }
+impl Drawable for Level {
+    fn draw(&self, frame: &mut Frame) {
+        // format our level string
+        let formatted = format!("LEVEL: {:0>2}", self.level);
+
+        // iterate over all characters
+        for (i, c) in formatted.chars().enumerate() {
+            // put them in the first row
+            frame[i + 20][0] = c;
+        }
+    }
+}
