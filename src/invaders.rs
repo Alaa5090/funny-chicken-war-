@@ -128,5 +128,18 @@ impl Invaders {
     pub fn reached_bottom(&self) -> bool {
         self.army.iter().any(|invader| invader.y >= NUM_ROWS - 1)
     }
+    pub fn kill_invader_at(&mut self, x: usize, y: usize) -> u16 {
+        if let Some(idx) = self
+            .army
+            .iter()
+            .position(|invader| (invader.x == x) && (invader.y == y))
+        {
+            let points = self.army[idx].points;
+            self.army.remove(idx);
+            points
+        } else {
+            0
+        }
+    }
 
 }
