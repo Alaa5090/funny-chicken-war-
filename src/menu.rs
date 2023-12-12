@@ -20,3 +20,8 @@ impl Menu {
         }
     }
 }
+impl Default for Menu {
+    fn default() -> Self {
+        Self::new()
+    }
+}
