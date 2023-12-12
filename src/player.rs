@@ -34,6 +34,18 @@ pub fn move_right(&mut self) {
         self.x += 1;
     }
 }
+pub fn kill_player_at(&mut self, x: usize, y: usize) -> bool {
+    if  self.x==x && self.y==y//position(|player| (player.x == x) && (player.y == y))
+    {
+        self.killed=true;
+        self.x=NUM_COLS / 2;
+        self.y=NUM_ROWS - 1;
+        true
+    } 
+    else {
+        false
+    }
+}
 
 
 
