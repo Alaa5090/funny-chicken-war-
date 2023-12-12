@@ -16,9 +16,9 @@ impl Level {
         }
         self.level == MAX_LEVEL
     }
-
-
-
-
-
+}
+impl Default for Level {
+    fn default() -> Self {
+        Self::new()
+    }
 }
