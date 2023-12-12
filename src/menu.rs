@@ -12,4 +12,11 @@ impl Menu {
             selection: 0,
         }
     }
+    pub fn change_option(&mut self, upwards: bool) {
+        if upwards && self.selection > 0 {
+            self.selection -= 1;
+        } else if !upwards && self.selection < self.options.len() - 1 {
+            self.selection += 1;
+        }
+    }
 }
