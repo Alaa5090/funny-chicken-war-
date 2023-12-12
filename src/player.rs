@@ -29,7 +29,11 @@ pub fn move_left(&mut self) {
         self.x -= 1;
     }
 }
-
+pub fn move_right(&mut self) {
+    if self.x < NUM_COLS - 1 {
+        self.x += 1;
+    }
+}
 
 
 
