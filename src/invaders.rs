@@ -125,5 +125,8 @@ impl Invaders {
     pub fn all_killed(&self) -> bool {
         self.army.is_empty()
     }
+    pub fn reached_bottom(&self) -> bool {
+        self.army.iter().any(|invader| invader.y >= NUM_ROWS - 1)
+    }
 
 }
