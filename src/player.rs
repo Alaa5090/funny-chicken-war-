@@ -23,4 +23,15 @@ impl Player {
             killed:false
         }
     }
+
+pub fn move_left(&mut self) {
+    if self.x >=1 {
+        self.x -= 1;
+    }
+}
+
+
+
+
+
 }
