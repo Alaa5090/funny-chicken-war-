@@ -98,3 +98,16 @@ impl Drawable for Player {
         
     }
 }
+pub struct Players {
+    
+    pub group: Vec<Player>,
+   
+}
+impl Players {
+    pub fn new() -> Self {
+        Self {
+            
+            group:vec![Player::new()],
+            
+        }
+    }}
