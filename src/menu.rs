@@ -25,3 +25,14 @@ impl Default for Menu {
         Self::new()
     }
 }
+impl Drawable for Menu {
+    fn draw(&self, frame: &mut Frame) {
+        frame[0][self.selection] = '>';
+        for (index, option) in self.options.iter().enumerate() {
+            for i in 0..option.len() {
+                frame[i + 1][index] = self.options[index].chars().nth(i).unwrap();
+            }
+        }
+    }
+}
+
