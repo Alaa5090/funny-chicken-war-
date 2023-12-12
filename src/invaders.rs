@@ -25,7 +25,19 @@ impl Invader {
             eggs: Vec::new(),
         }
     }
+   pub fn detect_hits(&mut self, player: &mut Player) {
+        for egg in self.eggs.iter_mut() {
+            if !egg.exploding {
+                let is_hitted = player.kill_player_at(egg.x, egg.y);
+                if is_hitted {
+                    //hit_something += hit_count;
+                    egg.explode();
+                }
+            }
+        }
+    }
 }
+
 impl InvaderPlayer for Invader {
     fn shoot(&mut self) -> bool {
         if self.eggs.len() < 2 {
@@ -42,17 +54,7 @@ impl InvaderPlayer for Invader {
         self.eggs.retain(|egg| !egg.dead());
     }
 
-    fn detect_hits(&mut self, player: &mut Player) {
-        for egg in self.eggs.iter_mut() {
-            if !egg.exploding {
-                let is_hitted = player.kill_player_at(egg.x, egg.y);
-                if is_hitted {
-                    //hit_something += hit_count;
-                    egg.explode();
-                }
-            }
-        }
-    }
+    
 }
 
 pub struct Invaders {

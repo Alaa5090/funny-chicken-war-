@@ -47,6 +47,19 @@ impl Player {
             false
         }
     }
+   pub fn detect_hits(&mut self, invaders: &mut Invaders) -> u16 {
+        let mut hit_something = 0u16;
+        for shot in self.shots.iter_mut() {
+            if !shot.exploding {
+                let hit_count = invaders.kill_invader_at(shot.x, shot.y);
+                if hit_count > 0 {
+                    hit_something += hit_count;
+                    shot.explode();
+                }
+            }
+        }
+        hit_something
+    }
 }
 impl InvaderPlayer for Player {
     fn shoot(&mut self) -> bool {
@@ -63,19 +76,7 @@ impl InvaderPlayer for Player {
         }
         self.shots.retain(|shot| !shot.dead());
     }
-    fn detect_hits(&mut self, invaders: &mut Invaders) -> u16 {
-        let mut hit_something = 0u16;
-        for shot in self.shots.iter_mut() {
-            if !shot.exploding {
-                let hit_count = invaders.kill_invader_at(shot.x, shot.y);
-                if hit_count > 0 {
-                    hit_something += hit_count;
-                    shot.explode();
-                }
-            }
-        }
-        hit_something
-    }
+    
 }
 impl Default for Player {
     fn default() -> Self {
