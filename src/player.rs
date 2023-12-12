@@ -14,3 +14,13 @@ pub struct Player {
     pub killed:bool,
     
 }
+impl Player {
+    pub fn new() -> Self {
+        Self {
+            x: NUM_COLS / 2,
+            y: NUM_ROWS - 3,
+            shots: Vec::new(),
+            killed:false
+        }
+    }
+}
